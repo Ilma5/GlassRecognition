@@ -74,7 +74,7 @@ public class CardScrollActivityOne extends Activity{
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		 // Test Comment 2
 		//Card Scroll View making
 		CardScrollViewOne = new CardScrollView(this);
         CardScrollViewOne.setAdapter(adapter);
