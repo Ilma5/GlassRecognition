@@ -43,7 +43,7 @@ public class CardScrollActivityOne extends Activity{
 			
 			//Conversion
 			byte[] decodedString = Base64.decode(
-					Person.getPhotoRecPer(),
+					Person.getPhoto(),
 					Base64.DEFAULT);
 
 			Bitmap decodedByte = BitmapFactory.decodeByteArray(
@@ -53,15 +53,15 @@ public class CardScrollActivityOne extends Activity{
 			CardsOne=new ArrayList<Card>();
 			
 			Card card1 = new Card(this);
-			card1.setText(Person.getNameRecPer()+" "+Person.getSurnameRecPer()+
-					"\n"+"\n"+Person.getRelationSStatusRecPer());
+			card1.setText(Person.getName()+" "+Person.getSurname()+
+					"\n"+"\n"+Person.getRelationship());
 			//card1.setFootnote("Relationship status: "+Person.getRelationSStatusRecPer());
 			card1.setImageLayout(Card.ImageLayout.LEFT);
 			card1.addImage(decodedByte);
 			View card1View = card1.getView();
 			
 			Card card2 = new Card(this);
-			card2.setText("Born "+Person.getBithDateRecPer()+"\n"+"in "+Person.getPlaceRecPer());
+			card2.setText("Born "+Person.getBithDate()+"\n"+"in "+Person.getHometown());
 			//card2.setImageLayout(Card.ImageLayout.LEFT);
 			//card2.addImage(decodedByte);
 			//card2.addImage(R.drawable.black_transparent);

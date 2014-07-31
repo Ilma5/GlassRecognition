@@ -5,61 +5,61 @@ import java.util.Date;
 
 public class RecognizedPerson implements Serializable{
 
-	int id; //This is not used
-	String birthDateRecPer;
-	String nameRecPer;
-	String surnameRecPer;
-	String relationSStatusRecPer;
-	String placeRecPer;
-	String photoRecPer;
+	//String IdFriend; //This is not used
+	String Birthdate;
+	String Name;
+	String Surname;
+	String Relationship;
+	String Hometown;
+	String Photo;
 	
 	//Constructor for -RecognizedPerson-
 	//Accepts all the parameters from service
 	public RecognizedPerson () {}
 	public RecognizedPerson (String name, String surname, String photo, String date, String place, String status) {
-		nameRecPer=name;
-		surnameRecPer=surname;
-		photoRecPer=photo;
-		placeRecPer=place;
-		birthDateRecPer=date;
-		relationSStatusRecPer=status;
+		Name=name;
+		Surname=surname;
+		Photo=photo;
+		Hometown=place;
+		Birthdate=date;
+		Relationship=status;
 	}
 //Getters and setters ------ NEED GETTER AND SETTER FOR DATE, PLACE, AND RELSSTATUS
-	public void setNameRecPer (String name) {
-		this.nameRecPer=name;
+	public void setName (String name) {
+		this.Name=name;
 	}
-	public String getNameRecPer () {
-		return nameRecPer;
+	public String getName () {
+		return Name;
 	}
-	public void setSurnameRecPer (String surname) {
-		this.surnameRecPer=surname;
+	public void setSurname (String surname) {
+		this.Surname=surname;
 	}
-	public String getSurnameRecPer () {
-		return surnameRecPer;
+	public String getSurname () {
+		return Surname;
 	}
-	public void setPhotoRecPer (String photo) {
-		this.photoRecPer=photo;
+	public void setPhoto (String photo) {
+		this.Photo=photo;
 	}
-	public String getPhotoRecPer () {
-		return photoRecPer;
+	public String getPhoto () {
+		return Photo;
 	}
-	public void setPlaceRecPer (String place) {
-		this.placeRecPer=place;
+	public void setHometown (String place) {
+		this.Hometown=place;
 	}
-	public String getPlaceRecPer () {
-		return placeRecPer;
+	public String getHometown () {
+		return Hometown;
 	}
-	public void setBithDateRecPer (String date) {
-		this.birthDateRecPer=date;
+	public void setBithDate (String date) {
+		this.Birthdate=date;
 	}
-	public String getBithDateRecPer () {
-		return birthDateRecPer;
+	public String getBithDate () {
+		return Birthdate;
 	}
-	public void setRelationSStatusRecPer (String status) {
-		this.relationSStatusRecPer=status;
+	public void setRelationship (String status) {
+		this.Relationship=status;
 	}
-	public String getRelationSStatusRecPer () {
-		return relationSStatusRecPer;
+	public String getRelationship() {
+		return Relationship;
 	}
 //G&S	
 
