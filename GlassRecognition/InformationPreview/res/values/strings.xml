@@ -4,5 +4,6 @@
     <string name="cs_activity_one_name">CardScrollActivityOne</string>
     <string name="cs_activity_two_name">CardScrollActivityTwo</string>
      <string name="menu_item_1">Menu Item One</string>
+     <string name="text">tekst</string>
 
 </resources>

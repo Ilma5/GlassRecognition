@@ -55,6 +55,7 @@ public final class R {
         public static final int cs_activity_one_name=0x7f060001;
         public static final int cs_activity_two_name=0x7f060002;
         public static final int menu_item_1=0x7f060003;
+        public static final int text=0x7f060004;
     }
     public static final class style {
         /** 

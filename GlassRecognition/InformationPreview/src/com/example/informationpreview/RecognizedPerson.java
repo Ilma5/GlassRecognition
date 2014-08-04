@@ -6,60 +6,60 @@ import java.util.Date;
 public class RecognizedPerson implements Serializable{
 
 	//String IdFriend; //This is not used
-	String Birthdate;
-	String Name;
-	String Surname;
-	String Relationship;
-	String Hometown;
-	String Photo;
+	String birthday;
+	String first_name;
+	String last_name;
+	String relationship_status;
+	String city;
+	String picture;
 	
 	//Constructor for -RecognizedPerson-
 	//Accepts all the parameters from service
 	public RecognizedPerson () {}
-	public RecognizedPerson (String name, String surname, String photo, String date, String place, String status) {
-		Name=name;
-		Surname=surname;
-		Photo=photo;
-		Hometown=place;
-		Birthdate=date;
-		Relationship=status;
+	public RecognizedPerson (String name, String surname, String date, String place, String status, String pic) {
+		first_name=name;
+		last_name=surname;
+		picture=pic;
+		city=place;
+		birthday=date;
+		relationship_status=status;
 	}
-//Getters and setters ------ NEED GETTER AND SETTER FOR DATE, PLACE, AND RELSSTATUS
-	public void setName (String name) {
-		this.Name=name;
+//Getters and setters ------ 
+	public void setFirstName (String first_name) {
+		this.first_name=first_name;
 	}
-	public String getName () {
-		return Name;
+	public String getFirstName () {
+		return first_name;
 	}
-	public void setSurname (String surname) {
-		this.Surname=surname;
+	public void setLastName (String last_name) {
+		this.last_name=last_name;
 	}
-	public String getSurname () {
-		return Surname;
+	public String getLastName () {
+		return last_name;
 	}
-	public void setPhoto (String photo) {
-		this.Photo=photo;
+	public void setPicture (String picture) {
+		this.picture=picture;
 	}
-	public String getPhoto () {
-		return Photo;
+	public String getPicture () {
+		return picture;
 	}
-	public void setHometown (String place) {
-		this.Hometown=place;
+	public void setCity (String place) {
+		this.city=place;
 	}
-	public String getHometown () {
-		return Hometown;
+	public String getCity () {
+		return city;
 	}
-	public void setBithDate (String date) {
-		this.Birthdate=date;
+	public void setBithday (String date) {
+		this.birthday=date;
 	}
-	public String getBithDate () {
-		return Birthdate;
+	public String getBithday () {
+		return birthday;
 	}
 	public void setRelationship (String status) {
-		this.Relationship=status;
+		this.relationship_status=status;
 	}
 	public String getRelationship() {
-		return Relationship;
+		return relationship_status;
 	}
 //G&S	
 

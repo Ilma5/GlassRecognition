@@ -43,25 +43,33 @@ public class CardScrollActivityOne extends Activity{
 			
 			//Conversion
 			byte[] decodedString = Base64.decode(
-					Person.getPhoto(),
+					Person.getPicture(),
 					Base64.DEFAULT);
-
 			Bitmap decodedByte = BitmapFactory.decodeByteArray(
 					decodedString, 0, decodedString.length);
 			
 			//Cards making (need other function)
 			CardsOne=new ArrayList<Card>();
 			
+			
+			if (Person.getRelationship()==null) Person.setRelationship("-");
+			if (Person.getFirstName()==null && Person.getLastName()==null) {Person.setFirstName("No name available..");}
+			else {
+				if (Person.getFirstName()==null) Person.setFirstName("");
+				if (Person.getLastName()==null) Person.setLastName("");
+			}
 			Card card1 = new Card(this);
-			card1.setText(Person.getName()+" "+Person.getSurname()+
-					"\n"+"\n"+Person.getRelationship());
+			card1.setText(Person.getFirstName()+" "+Person.getLastName()+
+					"\n"+"\n"+"Relationship status: "+Person.getRelationship());
 			//card1.setFootnote("Relationship status: "+Person.getRelationSStatusRecPer());
 			card1.setImageLayout(Card.ImageLayout.LEFT);
 			card1.addImage(decodedByte);
 			View card1View = card1.getView();
 			
+			if (Person.getCity()==null) Person.setCity("-");
+			if (Person.getBithday()==null) Person.setBithday("-");
 			Card card2 = new Card(this);
-			card2.setText("Born "+Person.getBithDate()+"\n"+"in "+Person.getHometown());
+			card2.setText("Born: "+Person.getBithday()+"\n"+"City: "+Person.getCity());
 			//card2.setImageLayout(Card.ImageLayout.LEFT);
 			//card2.addImage(decodedByte);
 			//card2.addImage(R.drawable.black_transparent);
@@ -74,7 +82,7 @@ public class CardScrollActivityOne extends Activity{
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		 // Test Comment 2
+
 		//Card Scroll View making
 		CardScrollViewOne = new CardScrollView(this);
         CardScrollViewOne.setAdapter(adapter);
