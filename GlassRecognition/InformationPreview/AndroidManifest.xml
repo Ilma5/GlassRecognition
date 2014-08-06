@@ -8,26 +8,64 @@
         android:targetSdkVersion="19" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.glass.permission.DEVELOPMENT"/>
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        
-     <activity
-            android:name="com.example.informationpreview.InformationPreviewActivity"
-            android:label="@string/app_name" 
-            android:theme="@style/MenuTheme" >
+ <!--         
+      <activity android:name="com.github.barcodeeye.LaunchActivity" >
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.google.android.glass.VoiceTrigger"
+                android:resource="@xml/voice_trigger_scan" />
+        </activity>
+        -->   
+           <activity
+            android:name="com.github.barcodeeye.scan.CaptureActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:stateNotNeeded="true"
+            android:theme="@style/CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 				<action android:name="com.google.android.glass.action.VOICE_TRIGGER"/> 
             </intent-filter>  
             <meta-data 
                 android:name="com.google.android.glass.VoiceTrigger"
-                android:resource="@xml/main_voice_trigger"/>     
+                android:resource="@xml/voice_trigger_scan"/>   
+        </activity>
+        <activity
+            android:name="com.github.barcodeeye.scan.ResultsActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:stateNotNeeded="true"
+            android:theme="@style/CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        
+       
+     <activity
+            android:name="com.example.informationpreview.InformationPreviewActivity"
+            android:label="@string/app_name" 
+            android:parentActivityName="com.github.barcodeeye.scan.CaptureActivity"
+            android:theme="@style/MenuTheme" >  
+            <meta-data 
+                 android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.github.barcodeeye.scan.CaptureActivity"/>     
      </activity>
-     
+  
      <activity 
          	android:name="com.example.informationpreview.CardScrollActivityOne"
          	android:label="@string/cs_activity_one_name"
@@ -38,14 +76,7 @@
                 android:value="com.example.informationpreview.InformationPreviewActivity"/>"
      </activity>
      
-    <!--  <activity 
-         	android:name="com.example.informationpreview.CardScrollActivityTwo"
-         	android:label="@string/cs_activity_two_name"
-         	android:parentActivityName="com.example.informationpreview.CardScrollActivityOne">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.informationpreview.CardScrollActivityOne"/>
-     </activity> -->
+
      
      
      
