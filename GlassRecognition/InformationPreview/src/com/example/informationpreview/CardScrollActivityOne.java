@@ -75,9 +75,23 @@ public class CardScrollActivityOne extends Activity{
 			//card2.addImage(R.drawable.black_transparent);
 			card2.setImageLayout(Card.ImageLayout.FULL);
 			View card2View = card2.getView();
+			
+			if (Person.getInterests()==null) Person.setInterests("-");
+			if (Person.getMusic()==null) Person.setMusic("-");
+			Card card3 = new Card(this);
+			card2.setText("Interests: "+Person.getInterests()+"\n"+
+						  "Music: "+Person.getMusic());
+			//card2.setImageLayout(Card.ImageLayout.LEFT);
+			//card2.addImage(decodedByte);
+			//card2.addImage(R.drawable.black_transparent);
+			card2.setImageLayout(Card.ImageLayout.FULL);
+			View card3View = card2.getView();
+			
+			
 						
 			CardsOne.add(card1);
 			CardsOne.add(card2);
+			CardsOne.add(card3);
 						
 		} catch(Exception e) {
 			e.printStackTrace();

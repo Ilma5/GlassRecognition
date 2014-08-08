@@ -1,7 +1,9 @@
 package com.example.informationpreview;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class RecognizedPerson implements Serializable{
 
@@ -13,16 +15,76 @@ public class RecognizedPerson implements Serializable{
 	String city;
 	String picture;
 	
+	String FBusername;
+	String interests;
+	String religion;
+	String quotes;
+	String political;
+	List<String> education;
+	String music;
+	List<String> sports;
+	String tv;
+	String movies;
+	String books;
+	List<String> languages;
+	List <String> work;
+	List <String> future_events;
+	List <String> last_checkins;
+	String about_me;
+	List<String> favorite_athletes;
+	List<String> favorite_teams;
+	List<String> groups;
+	List<String> television;
+	String bio;
+	String inspirational_people;
+	List<String> likes;
+	List<String> events;
+	List<String> mutual_friends;
+	
+	
+	
+	
 	//Constructor for -RecognizedPerson-
 	//Accepts all the parameters from service
 	public RecognizedPerson () {}
-	public RecognizedPerson (String name, String surname, String date, String place, String status, String pic) {
+	public RecognizedPerson (String name, String surname, String FBname, String interest, String rel, String quot, String date, String place, String status, String politics, List<String> educat, String mus, List<String> sport, String telev, String mov, String book, List<String> lang, List<String> job, List<String> futureEvents, List<String> lastCheckins, String about, List<String> athletes, List<String> teams, List<String> fbGroups, List<String> televisio, String bio_, String inspPeople, List<String> like, List<String> event, List<String> mutualFriends, String pic) {
 		first_name=name;
 		last_name=surname;
 		picture=pic;
 		city=place;
 		birthday=date;
 		relationship_status=status;
+		
+		FBusername=FBname;
+		interests=interest;
+		religion=rel;
+		quotes=quot;
+		political=politics;
+		education=new ArrayList<String>(educat);
+		music=mus;
+		sports=new ArrayList<String>(sport);
+		tv=telev;
+		movies=mov;
+		books=book;
+		languages=new ArrayList<String>(lang);
+		work=new ArrayList<String>(job);
+		future_events=new ArrayList<String>(futureEvents);
+		last_checkins=new ArrayList<String>(lastCheckins);
+		about_me=about;
+		favorite_athletes=new ArrayList<String>(athletes);
+		favorite_teams=new ArrayList<String>(teams);
+		groups=new ArrayList<String>(fbGroups);
+		television=new ArrayList<String>(televisio);
+		bio=bio_;
+		inspirational_people=inspPeople;
+		likes=new ArrayList<String>(like);
+		events=new ArrayList<String>(event);
+		mutual_friends=new ArrayList<String>(mutualFriends);
+		
+		
+		
+		
+		
 	}
 //Getters and setters ------ 
 	public void setFirstName (String first_name) {
@@ -60,6 +122,18 @@ public class RecognizedPerson implements Serializable{
 	}
 	public String getRelationship() {
 		return relationship_status;
+	}
+	public void setInterests (String i) {
+		this.interests=i;
+	}
+	public String getInterests() {
+		return interests;
+	}
+	public void setMusic (String m) {
+		this.relationship_status=m;
+	}
+	public String getMusic() {
+		return music;
 	}
 //G&S	
 
