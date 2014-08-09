@@ -18,17 +18,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
- <!--         
-      <activity android:name="com.github.barcodeeye.LaunchActivity" >
-            <intent-filter>
-                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
-            </intent-filter>
-
-            <meta-data
-                android:name="com.google.android.glass.VoiceTrigger"
-                android:resource="@xml/voice_trigger_scan" />
-        </activity>
-        -->   
+ 
            <activity
             android:name="com.github.barcodeeye.scan.CaptureActivity"
             android:clearTaskOnLaunch="true"
@@ -70,7 +60,7 @@
          	android:name="com.example.informationpreview.CardScrollActivityOne"
          	android:label="@string/cs_activity_one_name"
          	android:parentActivityName="com.example.informationpreview.InformationPreviewActivity"
-         	android:theme="@style/MenuTheme">
+         	android:theme="@style/CardsTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.informationpreview.InformationPreviewActivity"/>"
@@ -80,6 +70,25 @@
             android:label="@string/app_name"
             android:enabled="true" >
         </activity>
+        <activity 
+         	android:name="com.example.informationpreview.FailedConnectionActivity"
+         	android:label="@string/failedcon"
+         	android:parentActivityName="com.example.informationpreview.InformationPreviewActivity"
+         	android:theme="@style/MenuTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.informationpreview.InformationPreviewActivity"/>"
+     </activity>
+         <activity 
+         	android:name="com.example.informationpreview.FailedRecognitionActivity"
+         	android:label="@string/failedrecon"
+         	android:parentActivityName="com.example.informationpreview.InformationPreviewActivity"
+         	android:theme="@style/MenuTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.informationpreview.InformationPreviewActivity"/>"
+     </activity>
+     
 
      
      
