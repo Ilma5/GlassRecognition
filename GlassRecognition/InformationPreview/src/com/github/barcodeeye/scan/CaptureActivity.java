@@ -54,6 +54,7 @@ import com.google.zxing.ResultMetadataType;
 import com.google.zxing.ResultPoint;
 import com.google.zxing.client.android.camera.CameraManager;
 
+import org.apache.commons.validator.routines.InetAddressValidator;
 /**
  * This activity opens the camera and does the actual scanning on a background
  * thread. It draws a
@@ -67,7 +68,7 @@ import com.google.zxing.client.android.camera.CameraManager;
 public final class CaptureActivity extends BaseGlassActivity implements
         SurfaceHolder.Callback {
 
-	public static String Ilma;
+	private InetAddressValidator IPvalidator;
 	Context context2;
     private static final String IMAGE_PREFIX = "BarcodeEye_";
 
@@ -312,7 +313,7 @@ public final class CaptureActivity extends BaseGlassActivity implements
         ResultProcessor<?> processor = ResultProcessorFactory
                 .makeResultProcessor(this, rawResult, imageUri);
  
-        if (!rawResult.toString().contains(" ")) {
+        if (!validateQRcode(rawResult.toString())) {
         	Toast.makeText(getApplicationContext(), "Invalid QR code!", Toast.LENGTH_SHORT).show(); 
         	onResume();
         }
@@ -332,7 +333,18 @@ public final class CaptureActivity extends BaseGlassActivity implements
         }
 //        startActivity(ResultsActivity.newIntent(this,processor.getCardResults()));
     }
-
+    
+    
+    private boolean validateQRcode(String QRresult) {
+    	
+    	if (!QRresult.contains(" ")) return false;
+    	String[] splitedResult=QRresult.split(" ");
+		String IPaddress=splitedResult[0];
+		IPvalidator= new InetAddressValidator();
+    	if (!IPvalidator.isValidInet4Address(IPaddress)) return false;	
+    	return true;
+    }
+    
     private void initCamera(SurfaceHolder surfaceHolder) {
         if (surfaceHolder == null) {
             throw new IllegalStateException("No SurfaceHolder provided");
