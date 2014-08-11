@@ -56,7 +56,9 @@ public class MainActivity extends Activity implements GestureDetector.BaseListen
             String s = new String(Base64.encode(data,0));
 	   		byte[] decodedString = Base64.decode(s, Base64.DEFAULT);
 			Bitmap b = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-			Bitmap sbitmap = scaleDownBitmap(b, 100, MainActivity.this);
+			//Bitmap sbitmap = scaleDownBitmap(b, 100, MainActivity.this);
+			Bitmap sbitmap;
+			sbitmap=Bitmap.createScaledBitmap(b,600,442,false);
 			capturedPhoto=encodeTobase64(sbitmap);
             
 // Sending result (onActivityResult from InformationPreview):
@@ -76,7 +78,7 @@ public class MainActivity extends Activity implements GestureDetector.BaseListen
         String imageEncoded = Base64.encodeToString(b,Base64.DEFAULT);
 
         //Log.e("LOOK", imageEncoded);
-        System.out.println(imageEncoded);
+        //System.out.print(imageEncoded);
         return imageEncoded;
     }
     
