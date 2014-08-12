@@ -69,7 +69,14 @@ public class MainActivity extends Activity implements GestureDetector.BaseListen
         }
     };
 
-    public static String encodeTobase64(Bitmap image)
+//    @Override
+//	public void finish() {
+//    	   Intent intent = new Intent();
+//    	setResult(RESULT_CANCELED, intent);
+//		super.finish();
+//	}
+
+	public static String encodeTobase64(Bitmap image)
     {
         Bitmap immagex=image;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();  

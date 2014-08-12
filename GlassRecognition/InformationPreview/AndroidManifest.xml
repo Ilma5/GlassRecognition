@@ -20,13 +20,12 @@
         android:theme="@style/AppTheme" >
  
            <activity
-            android:name="com.github.barcodeeye.scan.CaptureActivity"
-            android:clearTaskOnLaunch="true"
+            android:name="com.example.informationpreview.MainManuActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape"
             android:stateNotNeeded="true"
-            android:theme="@style/CaptureTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" >
+            android:theme="@style/MenuTheme"
+             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 				<action android:name="com.google.android.glass.action.VOICE_TRIGGER"/> 
@@ -44,7 +43,19 @@
             android:theme="@style/CaptureTheme"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
-        
+        <activity
+            android:name="com.github.barcodeeye.scan.CaptureActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:stateNotNeeded="true"
+            android:theme="@style/CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:parentActivityName="com.example.informationpreview.MainManuActivity" >  
+            <meta-data 
+                 android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.informationpreview.MainManuActivity"/>     
+     </activity>
        
      <activity
             android:name="com.example.informationpreview.InformationPreviewActivity"

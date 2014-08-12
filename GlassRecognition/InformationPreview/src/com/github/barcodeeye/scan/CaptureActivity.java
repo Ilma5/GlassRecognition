@@ -13,7 +13,13 @@
 
 package com.github.barcodeeye.scan;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Map;
@@ -115,6 +121,41 @@ public final class CaptureActivity extends BaseGlassActivity implements
         setContentView(R.layout.activity_capture);
 
         context2=this;
+        StringBuilder loginData = new StringBuilder();
+        try
+        {
+        	
+        	File f =  new File(getCacheDir(),"LoginData.txt");
+            if (f.exists())
+            {
+        	    BufferedReader br = new BufferedReader(new FileReader(f));
+        	    String line;
+
+        	    while ((line = br.readLine()) != null) {
+        	    	loginData.append(line);
+        	    }
+        	    
+        	    if (!loginData.toString().isEmpty())
+        	    {
+        	    System.out.println("!!!!!!"+ loginData.toString() + "!!!!!!!"); 
+        	    // Intent Creation and Initialization
+        		Intent intent = new Intent(context2, InformationPreviewActivity.class);
+        		//I have added the line: (flags) (for closing the first activity)
+        		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        		// Create a Bundle and Put Bundle into it (SENDS PERSON)
+        		Bundle bundleObject = new Bundle();
+        		bundleObject.putSerializable("key",loginData.toString() );
+        		// Put Bundle into Intent and call start Activity
+        		intent.putExtras(bundleObject);
+        		startActivity(intent);
+        		//I have added the line: (finish) (for closing the first activity)
+        		finish();
+        	    }
+            }
+        	}
+        	catch (IOException e) {
+        	    //You'll need to add proper error handling here
+        	}
         
         mImageManager = new ImageManager(this);
 
@@ -124,7 +165,12 @@ public final class CaptureActivity extends BaseGlassActivity implements
         mAmbientLightManager = new AmbientLightManager(this);
 
         mViewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
-        Toast.makeText(getApplicationContext(), "Scan QR code for Login", Toast.LENGTH_LONG).show();
+        
+        if (loginData.toString().isEmpty())
+	    {
+        	Toast.makeText(getApplicationContext(), "Scan QR code for Login", Toast.LENGTH_LONG).show();
+	    }
+        
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
     }
 
@@ -183,6 +229,7 @@ public final class CaptureActivity extends BaseGlassActivity implements
 
     @Override
     protected void onDestroy() {
+    
         mInactivityTimer.shutdown();
         super.onDestroy();
     }
@@ -318,6 +365,23 @@ public final class CaptureActivity extends BaseGlassActivity implements
         	onResume();
         }
         else {
+      
+          	File f =  new File(getCacheDir(),"LoginData.txt");
+          
+        	FileOutputStream fos = null;
+        	  try {
+        		if(!f.exists()) {
+                    f.createNewFile();
+                  } 
+        			
+        		  fos = new FileOutputStream(f,false);
+        		  fos.write(rawResult.toString().getBytes());
+        	      fos.close();
+        	       
+              } catch (IOException e) {
+                  Log.e(TAG, "Failed to save Login!", e);
+              }
+        	
      // Intent Creation and Initialization
 		Intent intent = new Intent(context2, InformationPreviewActivity.class);
 //I have added the line: (flags) (for closing the first activity)
@@ -335,7 +399,8 @@ public final class CaptureActivity extends BaseGlassActivity implements
     }
     
     
-    private boolean validateQRcode(String QRresult) {
+
+	private boolean validateQRcode(String QRresult) {
     	
     	if (!QRresult.contains(" ")) return false;
     	String[] splitedResult=QRresult.split(" ");
