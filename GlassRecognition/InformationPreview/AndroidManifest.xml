@@ -20,11 +20,13 @@
         android:theme="@style/AppTheme" >
  
            <activity
-            android:name="com.example.informationpreview.MainManuActivity"
+            android:name="com.github.barcodeeye.scan.CaptureActivity"
+            android:clearTaskOnLaunch="true"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape"
             android:stateNotNeeded="true"
-            android:theme="@style/MenuTheme"
+            android:theme="@style/CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
              >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,17 +46,17 @@
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity
-            android:name="com.github.barcodeeye.scan.CaptureActivity"
+            android:name="com.example.informationpreview.MainManuActivity"
             android:clearTaskOnLaunch="true"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape"
             android:stateNotNeeded="true"
             android:theme="@style/CaptureTheme"
             android:windowSoftInputMode="stateAlwaysHidden"
-            android:parentActivityName="com.example.informationpreview.MainManuActivity" >  
+            android:parentActivityName="com.google.android.glass.sample.camera.MainActivity" >  
             <meta-data 
                  android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.informationpreview.MainManuActivity"/>     
+                android:value="com.google.android.glass.sample.camera.MainActivity"/>     
      </activity>
        
      <activity

@@ -25,6 +25,7 @@ public class MainManuActivity extends Activity
 {
 	TextView textView;
     public Boolean menucreated = false;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -76,7 +77,6 @@ public class MainManuActivity extends Activity
    	    	menu.getItem(3).setVisible(false);
    	    }
 	        
-	       
 		return true;
 	}
 	
@@ -95,20 +95,23 @@ public class MainManuActivity extends Activity
             	
             {
             	LogIn();
-            	 openOptionsMenu();
+            	 //openOptionsMenu();
+            	finish();
                 return true;
             }
             case R.id.menu_item_3:
             {
             	LogOut();
-            	 openOptionsMenu();
+            	 //openOptionsMenu();
+            	finish();
             	return true;
             }
             case R.id.menu_item_4:
             {
             	LogOut();       	
             	LogIn();
-            	 openOptionsMenu();
+            	 //openOptionsMenu();
+            	finish();
             	return true;
             }
             default:
@@ -150,8 +153,8 @@ public class MainManuActivity extends Activity
 	    System.out.println("!!!!!!++ "+hasFocusFlag+" ++!!!!!!!"); 
 	    if(hasFocusFlag)
 	    {
+	    	
 	        openOptionsMenu();
-	       
 	    }
 	  
 	}

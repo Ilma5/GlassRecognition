@@ -18,7 +18,9 @@ package com.google.android.glass.sample.camera;
 
 import java.io.ByteArrayOutputStream;
 
+import com.example.informationpreview.MainManuActivity;
 import com.example.informationpreview.R;
+import com.github.barcodeeye.scan.CaptureActivity;
 import com.google.android.glass.touchpad.GestureDetector;
 import com.google.android.glass.touchpad.Gesture;
 
@@ -141,6 +143,13 @@ public class MainActivity extends Activity implements GestureDetector.BaseListen
         if (gesture == Gesture.TAP) {
             mCamera.takePicture(null, null, mPictureCallback);
             return true;
+        }
+        if (gesture == Gesture.SWIPE_RIGHT){
+    		Intent intent = new Intent(MainActivity.this, MainManuActivity.class);
+    		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);		
+    		startActivity(intent);
+    		finish();
+        	return true;
         }
         return false;
     }
