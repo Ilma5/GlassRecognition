@@ -112,7 +112,7 @@ public class MainActivity extends Activity implements GestureDetector.BaseListen
 
         setContentView(R.layout.activity_camera);
         mPreview = (CameraPreview) findViewById(R.id.preview);
-        Toast.makeText(getApplicationContext(), "Tap to take a picture", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "    Tap to take a picture  \nLong press for options menu", Toast.LENGTH_LONG).show();
 
 
         mDetector = new GestureDetector(this).setBaseListener(this);
