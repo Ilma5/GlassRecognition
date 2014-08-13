@@ -29,7 +29,7 @@ public class FailedRecognitionActivity extends Activity{
 
 			
 			Card card = new Card(this);
-			card.setText("SORRY,\n\nWE DID NOT RECOGNISED ANYBODY");
+			card.setText("SORRY,\n\nWE DID NOT RECOGNISE ANYBODY");
 			card.setImageLayout(Card.ImageLayout.FULL);
 			View cardView = card.getView();
 				
