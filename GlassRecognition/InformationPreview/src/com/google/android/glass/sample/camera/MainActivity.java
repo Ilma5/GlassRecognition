@@ -144,7 +144,7 @@ public class MainActivity extends Activity implements GestureDetector.BaseListen
             mCamera.takePicture(null, null, mPictureCallback);
             return true;
         }
-        if (gesture == Gesture.SWIPE_RIGHT){
+        if (gesture == Gesture.LONG_PRESS){
     		Intent intent = new Intent(MainActivity.this, MainManuActivity.class);
     		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);		
     		startActivity(intent);
