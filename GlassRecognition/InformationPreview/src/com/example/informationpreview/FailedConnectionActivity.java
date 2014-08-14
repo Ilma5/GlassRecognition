@@ -29,7 +29,7 @@ public class FailedConnectionActivity extends Activity{
 
 			
 			Card card = new Card(this);
-			card.setText("CONNECTION TO SERVER FAILED\n\nCLOSE THE APPLICATION");
+			card.setText("CONNECTION TO SERVER FAILED.\n\nCLOSE THE APPLICATION");
 			card.setImageLayout(Card.ImageLayout.FULL);
 			View cardView = card.getView();
 				

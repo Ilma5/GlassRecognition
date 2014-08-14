@@ -4,20 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.android.glass.app.Card;
+import com.google.android.glass.touchpad.GestureDetector;
+import com.google.android.glass.touchpad.Gesture;
 import com.google.android.glass.widget.CardScrollAdapter;
 import com.google.android.glass.widget.CardScrollView;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
-public class CardScrollActivityOne extends Activity{
+public class CardScrollActivityOne extends Activity implements GestureDetector.BaseListener{
 	//*****************************************************************
 	//Accepts the person, make live cards for information preview
 	//*****************************************************************
@@ -26,13 +30,15 @@ public class CardScrollActivityOne extends Activity{
 	private CardScrollView CardScrollViewOne; 
 	private  ExampleCardScrollAdapter adapter = new ExampleCardScrollAdapter();
 	Bitmap decodedByte;
-	Context context2; 
+	Context context2;
+	private GestureDetector mDetector;
 	 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_one);
 		context2=this;
+		mDetector = new GestureDetector(this).setBaseListener(this);
 		try {
 			//Get the bundle object
 			Bundle bundleObject=getIntent().getExtras();
@@ -164,4 +170,26 @@ public class CardScrollActivityOne extends Activity{
 		}
 		
 	}
+	
+	@Override
+    public boolean onGenericMotionEvent(MotionEvent event) {
+        return mDetector.onMotionEvent(event);
+    }
+
+    @Override
+    public boolean onGesture(Gesture gesture) {
+        if (gesture == Gesture.TAP) {
+//            mCamera.takePicture(null, null, mPictureCallback);
+            return true;
+        }
+        if (gesture == Gesture.LONG_PRESS){
+    		Intent intent = new Intent(CardScrollActivityOne.this, MainManuActivity.class);
+    		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);		
+    		startActivity(intent);
+    		finish();
+        	return true;
+        }
+        return false;
+    }
+	
 }
