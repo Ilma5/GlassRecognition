@@ -122,7 +122,8 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 		if (Person.getRelationship()!=null) ListOfAttributes.add("Relationship: "+Person.getRelationship());
 		if (Person.getEducation()!=null) ListOfAttributes.add("Education: "+Person.getEducation());
 		if (Person.getWork()!=null) ListOfAttributes.add("Work: "+Person.getWork());
-		if (Person.getLanguages()!=null) ListOfAttributes.add("Languages: "+Person.getLanguages());
+		if (Person.getLanguages()!=null) {	ListOfAttributes.add("Languages: "+Person.getLanguages());
+			}
 		if (Person.getReligion()!=null) ListOfAttributes.add("Religion: "+Person.getReligion());
 		if (Person.getPolitical()!=null) ListOfAttributes.add("Political: "+Person.getPolitical());
 		

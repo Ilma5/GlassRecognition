@@ -79,7 +79,7 @@ public class InformationPreviewActivity extends Activity {
 			Bundle bundleObject=getIntent().getExtras();
 			//Get Recognized Person Bundle
 			QRResult = (String) bundleObject.getSerializable("key");
-			//QR result should be: "10.4.11.181 f46fc34f-47ab-4848-b77e-20e77fd65d8e"
+			//QR result should be: "10.4.11.181 9807a6c8-8fc7-4cea-bed7-581a5993ef9e"
 			String[] splitedResult=QRResult.split(" ");
 			IdUser=splitedResult[1];
 			IPaddress=splitedResult[0];

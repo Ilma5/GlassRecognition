@@ -1,6 +1,24 @@
 package com.example.informationpreview;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Future;
+
+import com.example.fbattributes.Education;
+import com.example.fbattributes.Event;
+import com.example.fbattributes.Favorite_athlete;
+import com.example.fbattributes.Favorite_team;
+import com.example.fbattributes.Future_event;
+import com.example.fbattributes.Group;
+import com.example.fbattributes.Language;
+import com.example.fbattributes.Last_checkin;
+import com.example.fbattributes.Like;
+import com.example.fbattributes.MutualFriend;
+import com.example.fbattributes.Sport;
+import com.example.fbattributes.Television;
+import com.example.fbattributes.Work;
+
 
 public class RecognizedPerson implements Serializable{
 
@@ -16,31 +34,31 @@ public class RecognizedPerson implements Serializable{
 	String religion;
 	String quotes;
 	String political;
-	String education;
+	List<Education> education;
 	String music;
-	String sports;
+	List<Sport> sports;
 	String tv;
 	String movies;
 	String books;
-	String languages;
-	String work;
-	String future_events;
-	String last_checkins;
+	List<Language> languages;
+	List<Work> work;
+	List<Future_event> future_events;
+	List<Last_checkin> last_checkins;
 	String about_me;
-	String favorite_athletes;
-	String favorite_teams;
-	String groups;
-	String television;
+	List<Favorite_athlete> favorite_athletes;
+	List<Favorite_team> favorite_teams;
+	List<Group> groups;
+	List<Television> television;
 	String bio;
 	String inspirational_people;
-	String likes;
-	String events;
-	String mutual_friends;
+	List<Like> likes;
+	List<Event> events;
+	List<MutualFriend> mutual_friends;
 
 	
 	//Constructor for -RecognizedPerson-
 	public RecognizedPerson () {}
-	public RecognizedPerson (String name, String surname, String FBname, String interest, String rel, String quot, String date, String place, String status, String politics, String educat, String mus, String sport, String telev, String mov, String book, String lang, String job, String futureEvents, String lastCheckins, String about, String athletes, String teams, String fbGroups, String televisio, String bio_, String inspPeople, String like, String event, String mutualFriends, String pic) {
+	public RecognizedPerson (String name, String surname, String FBname, String interest, String rel, String quot, String date, String place, String status, String politics, List<Education> educat, String mus, List<Sport> sport, String telev, String mov, String book, List<Language> lang, List<Work> job, List<Future_event> futureEvents, List<Last_checkin> lastCheckins, String about, List<Favorite_athlete> athletes, List<Favorite_team> teams, List<Group> fbGroups, List<Television> televisio, String bio_, String inspPeople, List<Like> like, List<Event> event, List<MutualFriend> mutualFriends, String pic) {
 
 		first_name=name;
 		last_name=surname;
@@ -55,26 +73,26 @@ public class RecognizedPerson implements Serializable{
 		religion=rel;
 		quotes=quot;
 		political=politics;
-		education=educat;
+		education=new ArrayList<Education>(educat);
 		music=mus;
-		sports=sport;
+		sports=new ArrayList<Sport>(sport);
 		tv=telev;
 		movies=mov;
 		books=book;
-		languages=lang;
-		work=job;
-		future_events=futureEvents;
-		last_checkins=lastCheckins;
+		languages=new ArrayList<Language>(lang);
+		work=new ArrayList<Work>(job);
+		future_events=new ArrayList<Future_event>(futureEvents);
+		last_checkins=new ArrayList<Last_checkin>(lastCheckins);
 		about_me=about;
-		favorite_athletes=athletes;
-		favorite_teams=teams;
-		groups=fbGroups;
-		television=televisio;
+		favorite_athletes=new ArrayList<Favorite_athlete>(athletes);
+		favorite_teams=new ArrayList<Favorite_team>(teams);
+		groups=new ArrayList<Group>(fbGroups);
+		television=new ArrayList<Television>(televisio);
 		bio=bio_;
 		inspirational_people=inspPeople;
-		likes=like;
-		events=event;
-		mutual_friends=mutualFriends;	
+		likes=new ArrayList<Like>(like);
+		events=new ArrayList<Event>(event);
+		mutual_friends=new ArrayList<MutualFriend>(mutualFriends);	
 	}
 	
 //Getters and setters ------ 
@@ -186,82 +204,82 @@ public class RecognizedPerson implements Serializable{
 	public String getInspirational_people() {
 		return inspirational_people;
 	}
-	public void setEducation (String e) {
-		this.education=e;
+	public void setEducation (ArrayList<Education> ed) {
+		this.education=ed;
 	}
-	public String getEducation() {
+	public List<Education> getEducation() {
 		return education;
 	}
-	public void setSports (String e) {
-		this.sports=e;
+	public void setSports (ArrayList<Sport> s) {
+		this.sports=s;
 	}
-	public String getSports() {
+	public List<Sport> getSports() {
 		return sports;
 	}
-	public void setLanguages (String e) {
+	public void setLanguages (ArrayList<Language> e) {
 		this.languages=e;
 	}
-	public String getLanguages() {
+	public List<Language> getLanguages() {
 		return languages;
 	}
-	public void setWork (String e) {
+	public void setWork (ArrayList<Work> e) {
 		this.work=e;
 	}
-	public String getWork() {
+	public List<Work> getWork() {
 		return work;
 	}
-	public void setFuture_events (String e) {
+	public void setFuture_events (ArrayList<Future_event> e) {
 		this.future_events=e;
 	}
-	public String getFuture_events() {
+	public List<Future_event> getFuture_events() {
 		return future_events;
 	}
-	public void setLast_checkins (String e) {
+	public void setLast_checkins (ArrayList<Last_checkin> e) {
 		this.last_checkins=e;
 	}
-	public String getLast_checkins() {
+	public List<Last_checkin> getLast_checkins() {
 		return last_checkins;
 	}
-	public void setFavourite_athletes (String e) {
+	public void setFavourite_athletes (ArrayList<Favorite_athlete> e) {
 		this.favorite_athletes=e;
 	}
-	public String getFavourite_athletes() {
+	public List<Favorite_athlete> getFavourite_athletes() {
 		return favorite_athletes;
 	}
-	public void setFavourite_teams (String e) {
+	public void setFavourite_teams (ArrayList<Favorite_team> e) {
 		this.favorite_teams=e;
 	}
-	public String getFavourite_teams() {
+	public List<Favorite_team> getFavourite_teams() {
 		return favorite_teams;
 	}
-	public void setGroups (String e) {
+	public void setGroups (ArrayList<Group> e) {
 		this.groups=e;
 	}
-	public String getGroups() {
+	public List<Group> getGroups() {
 		return groups;
 	}
-	public void setTelevision (String e) {
-		this.television=e;
+	public void setTelevision (ArrayList<Television> t) {
+		this.television=t;
 	}
-	public String getTelevision () {
+	public List<Television> getTelevision () {
 		return television;
 	}
-	public void setLikes (String e) {
+	public void setLikes (ArrayList<Like> e) {
 		this.likes=e;
 	}
-	public String getLikes() {
+	public List<Like> getLikes() {
 		return likes;
 	}
-	public void setEvents (String e) {
+	public void setEvents (ArrayList<Event> e) {
 		this.events=e;
 	}
-	public String getEvents() {
+	public List<Event> getEvents() {
 		return events;
 	}
-	public void setMutual_friends (String e) {
+	public void setMutual_friends (ArrayList<MutualFriend> e) {
 		this.mutual_friends=e;
 	}
-	public String getMutual_friends() {
+	public List<MutualFriend> getMutual_friends() {
 		return mutual_friends;
 	}
 //G&S	
