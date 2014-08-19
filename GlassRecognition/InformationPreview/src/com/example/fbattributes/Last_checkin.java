@@ -31,7 +31,7 @@ public class Last_checkin implements Serializable{
 	{
 		this.time=_time;
 	}
-	public void getTime()
+	public String getTime()
 	{
 		return time;
 	}

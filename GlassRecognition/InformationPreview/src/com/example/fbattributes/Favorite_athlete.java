@@ -4,12 +4,11 @@ import java.io.Serializable;
 
 public class Favorite_athlete implements Serializable{
 	String name;
-	String id;
-	public Favorite_athlete () {}
-	public Favorite_athlete(String firstname, String ident)
+	String id;	public Favorite_athlete () {}
+	public Favorite_athlete(String firstname)
 	{
 		name=firstname;
-		id=ident;
+		
 	}
 	public void setName(String firstname)
 	{
@@ -18,12 +17,6 @@ public class Favorite_athlete implements Serializable{
 	public String getName () {
 		return name;
 	}
-	public void setId(String ident)
-	{
-		this.id=ident;
-	}
-	public String getId () {
-		return id;
-	}
+
 
 }

@@ -6,14 +6,14 @@ public class Television implements Serializable{
 	String Category;
     String name;
     String created_time;
-    String id;
+
     public Television () {}
-	public Television(String cat, String _name, String created, String ident)
+	public Television(String cat, String _name, String created)
 	{
 		Category=cat;
 		name=_name;
 		created_time=created;
-		id=ident;
+
 	}
 	public void setCategory(String cat)
 	{
@@ -33,16 +33,10 @@ public class Television implements Serializable{
 	{
 		this.created_time=created;
 	}
-	public void getTime()
+	public String getTime()
 	{
 		return created_time;
 	}
-	public void setId(String ident)
-	{
-		this.id=ident;
-	}
-	public String getId () {
-		return id;
-	}
+
 
 }

@@ -2,7 +2,6 @@ package com.example.fbattributes;
 
 import java.io.Serializable;
 
-import com.example.informationpreview.String;
 
 public class Education implements Serializable{
 	String schoolName;
