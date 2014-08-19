@@ -101,6 +101,7 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
         }
     }
 	
+	
 	public void makeListOfCards() {
 		if (Person.getFirstName()==null && Person.getLastName()==null) {Person.setFirstName("No name available.."); Person.setLastName("");}
 		else {
@@ -120,33 +121,44 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 		if (Person.getBirthday()!=null) ListOfAttributes.add("Birthday: "+Person.getBirthday());
 		if (Person.getCity()!=null) ListOfAttributes.add("City: "+Person.getCity());
 		if (Person.getRelationship()!=null) ListOfAttributes.add("Relationship: "+Person.getRelationship());
-		if (Person.getEducation()!=null) ListOfAttributes.add("Education: "+Person.getEducation());
-		if (Person.getWork()!=null) ListOfAttributes.add("Work: "+Person.getWork());
-		if (Person.getLanguages()!=null) {	ListOfAttributes.add("Languages: "+Person.getLanguages());
+		if (!Person.getEducation().isEmpty()) {
+			
+			int count = Person.getEducation().size();
+			StringBuffer sb = new StringBuffer("Education: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getEducation().get(i).getSchoolName()+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());	
+		}
+		if (!Person.getWork().isEmpty()) {
+			
+		}
+		if (!Person.getLanguages().isEmpty()) {	ListOfAttributes.add("Languages: "+Person.getLanguages());
 			}
 		if (Person.getReligion()!=null) ListOfAttributes.add("Religion: "+Person.getReligion());
 		if (Person.getPolitical()!=null) ListOfAttributes.add("Political: "+Person.getPolitical());
 		
-		if (Person.getEvents()!=null) ListOfAttributes.add("Events: "+Person.getEvents());
-		if (Person.getLast_checkins()!=null) ListOfAttributes.add("Last_checkins: "+Person.getLast_checkins());
-		if (Person.getFuture_events()!=null) ListOfAttributes.add("Future events: "+Person.getFuture_events());
-		if (Person.getMutual_friends()!=null) ListOfAttributes.add("Mutual friends: "+Person.getMutual_friends());
-		if (Person.getGroups()!=null) ListOfAttributes.add("Groups: "+Person.getGroups());
-		if (Person.getLikes()!=null) ListOfAttributes.add("Likes: "+Person.getLikes());
-		if (Person.getFBusername()!=null) ListOfAttributes.add("facebook: "+Person.getFBusername());
+		if (!Person.getEvents().isEmpty()) ListOfAttributes.add("Events: "+Person.getEvents());
+		if (!Person.getLast_checkins().isEmpty()) ListOfAttributes.add("Last_checkins: "+Person.getLast_checkins());
+		if (!Person.getFuture_events().isEmpty()) ListOfAttributes.add("Future events: "+Person.getFuture_events());
+		if (!Person.getMutual_friends().isEmpty()) ListOfAttributes.add("Mutual friends: "+Person.getMutual_friends());
+		if (!Person.getGroups().isEmpty()) ListOfAttributes.add("Groups: "+Person.getGroups());
+		if (!Person.getLikes().isEmpty()) ListOfAttributes.add("Likes: "+Person.getLikes());
+		//if (Person.getFBusername()!=null) ListOfAttributes.add("facebook: "+Person.getFBusername());
 		
 		if (Person.getAbout_me()!=null) ListOfAttributes.add("About me: "+Person.getAbout_me());
 		if (Person.getInterests()!=null) ListOfAttributes.add("Interests: "+Person.getInterests());
 		if (Person.getInspirational_people()!=null) ListOfAttributes.add("Inspirational people: "+Person.getInspirational_people());
 		
-		if (Person.getSports()!=null) ListOfAttributes.add("Sports: "+Person.getSports());
-		if (Person.getFavourite_teams()!=null) ListOfAttributes.add("Favourite teams: "+Person.getFavourite_teams());
-		if (Person.getFavourite_athletes()!=null) ListOfAttributes.add("Favourite athletes: "+Person.getFavourite_athletes());
+		if (!Person.getSports().isEmpty()) ListOfAttributes.add("Sports: "+Person.getSports());
+		if (!Person.getFavourite_teams().isEmpty()) ListOfAttributes.add("Favourite teams: "+Person.getFavourite_teams());
+		if (!Person.getFavourite_athletes().isEmpty()) ListOfAttributes.add("Favourite athletes: "+Person.getFavourite_athletes());
 		if (Person.getTV()!=null) ListOfAttributes.add("TV: "+Person.getTV());	
 		if (Person.getMovies()!=null) ListOfAttributes.add("Movies: "+Person.getMovies());
 		if (Person.getBooks()!=null) ListOfAttributes.add("Books: "+Person.getBooks());
 		if (Person.getMusic()!=null) ListOfAttributes.add("Music: "+Person.getMusic());
-		if (Person.getTelevision()!=null) ListOfAttributes.add("Television: "+Person.getTelevision());
+		if (!Person.getTelevision().isEmpty()) ListOfAttributes.add("Television: "+Person.getTelevision());
 			
 		if (Person.getQuotes()!=null) ListOfAttributes.add("Quotes: "+Person.getQuotes());	
 		if (Person.getBio()!=null) ListOfAttributes.add("Bio: "+Person.getBio());
@@ -171,6 +183,8 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 		}
 		
 	}
+	
+	
 	
 	@Override
     public boolean onGenericMotionEvent(MotionEvent event) {
