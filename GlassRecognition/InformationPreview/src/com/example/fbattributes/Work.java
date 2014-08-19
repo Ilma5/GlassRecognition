@@ -9,11 +9,11 @@ public class Work implements Serializable{
 	{
 		EmployerName=employer;
 	}
-	public void setSchoolName(String employer)
+	public void setWork(String employer)
 	{
 		this.EmployerName=employer;
 	}
-	public String getSchoolName () {
+	public String getWork () {
 		return EmployerName;
 	}
 }
