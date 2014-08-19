@@ -5,11 +5,11 @@ import java.io.Serializable;
 public class Future_event implements Serializable{
 
 	String name;
-	string locationCountry;
-    string locationCity;
-    string locationStreet;
-    string date ;
-    string time ;
+	String locationCountry;
+    String locationCity;
+    String locationStreet;
+    String date ;
+    String time ;
 	public Future_event() {}
 	public Future_event(String eventname, String country, String City, String Street, String _date, String Time)
 	{
@@ -18,7 +18,7 @@ public class Future_event implements Serializable{
 		locationCity=City;
 		locationStreet=Street;
 		date=_date;
-		time=_time;
+		time=Time;
 
 	}
 	public void setName(String eventname)

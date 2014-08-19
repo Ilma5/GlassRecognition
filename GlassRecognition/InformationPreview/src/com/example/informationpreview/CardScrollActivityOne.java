@@ -101,6 +101,21 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
         }
     }
 	
+	private List<String> ArrangeStrings(String string) {
+		 String[] parts = string.split(",");
+		 int counter=parts.length-1;
+		List<String>splittedstring=new ArrayList<String>();
+		
+		for(int i=0; i<=counter; i++)
+			{	
+			splittedstring.add(parts[i]+"\n");
+			if (i==3) i=counter+1;
+			
+			}	
+		return splittedstring;
+			
+		}
+	
 	
 	public void makeListOfCards() {
 		if (Person.getFirstName()==null && Person.getLastName()==null) {Person.setFirstName("No name available.."); Person.setLastName("");}
@@ -117,51 +132,10 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 		CardsOne.add(card1);
 		
 		List<String> ListOfAttributes=new ArrayList<String>();
+		
+		fillListOfAttributes(ListOfAttributes);
+		
 	
-		if (Person.getBirthday()!=null) ListOfAttributes.add("Birthday: "+Person.getBirthday());
-		if (Person.getCity()!=null) ListOfAttributes.add("City: "+Person.getCity());
-		if (Person.getRelationship()!=null) ListOfAttributes.add("Relationship: "+Person.getRelationship());
-		if (!Person.getEducation().isEmpty()) {
-			
-			int count = Person.getEducation().size();
-			StringBuffer sb = new StringBuffer("Education: ");
-			for (int i=0; i<count; i++) {
-				sb.append(Person.getEducation().get(i).getSchoolName()+"\n");
-				if (i==2) i=count;
-			}
-			ListOfAttributes.add(sb.toString());	
-		}
-		if (!Person.getWork().isEmpty()) {
-			
-		}
-		if (!Person.getLanguages().isEmpty()) {	ListOfAttributes.add("Languages: "+Person.getLanguages());
-			}
-		if (Person.getReligion()!=null) ListOfAttributes.add("Religion: "+Person.getReligion());
-		if (Person.getPolitical()!=null) ListOfAttributes.add("Political: "+Person.getPolitical());
-		
-		if (!Person.getEvents().isEmpty()) ListOfAttributes.add("Events: "+Person.getEvents());
-		if (!Person.getLast_checkins().isEmpty()) ListOfAttributes.add("Last_checkins: "+Person.getLast_checkins());
-		if (!Person.getFuture_events().isEmpty()) ListOfAttributes.add("Future events: "+Person.getFuture_events());
-		if (!Person.getMutual_friends().isEmpty()) ListOfAttributes.add("Mutual friends: "+Person.getMutual_friends());
-		if (!Person.getGroups().isEmpty()) ListOfAttributes.add("Groups: "+Person.getGroups());
-		if (!Person.getLikes().isEmpty()) ListOfAttributes.add("Likes: "+Person.getLikes());
-		//if (Person.getFBusername()!=null) ListOfAttributes.add("facebook: "+Person.getFBusername());
-		
-		if (Person.getAbout_me()!=null) ListOfAttributes.add("About me: "+Person.getAbout_me());
-		if (Person.getInterests()!=null) ListOfAttributes.add("Interests: "+Person.getInterests());
-		if (Person.getInspirational_people()!=null) ListOfAttributes.add("Inspirational people: "+Person.getInspirational_people());
-		
-		if (!Person.getSports().isEmpty()) ListOfAttributes.add("Sports: "+Person.getSports());
-		if (!Person.getFavourite_teams().isEmpty()) ListOfAttributes.add("Favourite teams: "+Person.getFavourite_teams());
-		if (!Person.getFavourite_athletes().isEmpty()) ListOfAttributes.add("Favourite athletes: "+Person.getFavourite_athletes());
-		if (Person.getTV()!=null) ListOfAttributes.add("TV: "+Person.getTV());	
-		if (Person.getMovies()!=null) ListOfAttributes.add("Movies: "+Person.getMovies());
-		if (Person.getBooks()!=null) ListOfAttributes.add("Books: "+Person.getBooks());
-		if (Person.getMusic()!=null) ListOfAttributes.add("Music: "+Person.getMusic());
-		if (!Person.getTelevision().isEmpty()) ListOfAttributes.add("Television: "+Person.getTelevision());
-			
-		if (Person.getQuotes()!=null) ListOfAttributes.add("Quotes: "+Person.getQuotes());	
-		if (Person.getBio()!=null) ListOfAttributes.add("Bio: "+Person.getBio());
 // Showing 3 attributes per Card
 		int k=ListOfAttributes.size();
 		int numOfCards;
@@ -182,6 +156,184 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 			
 		}
 		
+	}
+
+
+	private void fillListOfAttributes(List<String> ListOfAttributes) {
+		
+		if (Person.getBirthday()!=null) ListOfAttributes.add("Birthday: "+Person.getBirthday());
+		if (Person.getCity()!=null) ListOfAttributes.add("City: "+Person.getCity());
+		if (Person.getRelationship()!=null) ListOfAttributes.add("Relationship: "+Person.getRelationship());
+		if (!Person.getEducation().isEmpty()) {
+			
+			int count = Person.getEducation().size();
+			StringBuffer sb = new StringBuffer("Education: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getEducation().get(i).getSchoolName()+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+			
+		}
+		if (!Person.getWork().isEmpty()) {
+			
+			int count = Person.getWork().size();
+			StringBuffer sb = new StringBuffer("Work: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getWork().get(i).getWork()+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+		}
+		if (!Person.getLanguages().isEmpty()) {
+			
+			int count = Person.getLanguages().size();
+			StringBuffer sb = new StringBuffer("Languages: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getLanguages().get(i).getName()+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+			
+		}
+		if (Person.getReligion()!=null) ListOfAttributes.add("Religion: "+Person.getReligion());
+		if (Person.getPolitical()!=null) ListOfAttributes.add("Political: "+Person.getPolitical());
+		
+		if (!Person.getEvents().isEmpty()) {
+			
+			int count = Person.getEvents().size();
+			StringBuffer sb = new StringBuffer("Events: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getEvents().get(i).getname()+" at "+Person.getEvents().get(i).getLocation()+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+			
+		}
+		if (!Person.getLast_checkins().isEmpty()) {
+			
+			int count = Person.getLast_checkins().size();
+			StringBuffer sb = new StringBuffer("Last checkins: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getLast_checkins().get(i).getLocation()+" at "+Person.getLast_checkins().get(i).getTime()+"\n");
+				if (i==1) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+			
+		}
+		if (!Person.getFuture_events().isEmpty()) {
+			
+			int count = Person.getFuture_events().size();
+			StringBuffer sb = new StringBuffer("Future events: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getFuture_events().get(i).getName()+"\n"+"Date: "+
+						Person.getFuture_events().get(i).getDate()+" in "+Person.getFuture_events().get(i).getLocationCity()+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+		
+		}
+		if (!Person.getMutual_friends().isEmpty()) {
+			
+			int count = Person.getMutual_friends().size();
+			StringBuffer sb = new StringBuffer("Mutual friends: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getMutual_friends().get(i).getName()+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+			
+		}
+		if (!Person.getGroups().isEmpty()) {
+			
+			int count = Person.getGroups().size();
+			StringBuffer sb = new StringBuffer("Groups: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getGroups().get(i).getName()+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+			
+		}
+		if (!Person.getLikes().isEmpty()) {
+			
+			int count = Person.getLikes().size();
+			StringBuffer sb = new StringBuffer("Likes: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getLikes().get(i).getName()+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+			
+		}
+		//if (Person.getFBusername()!=null) ListOfAttributes.add("facebook: "+Person.getFBusername());
+		
+		if (Person.getAbout_me()!=null) ListOfAttributes.add("About me: "+Person.getAbout_me());
+		if (Person.getInterests()!=null) ListOfAttributes.add("Interests: "+Person.getInterests());
+		if (Person.getInspirational_people()!=null) ListOfAttributes.add("Inspirational people: "+Person.getInspirational_people());
+		
+		if (!Person.getSports().isEmpty()) {
+			
+			int count = Person.getSports().size();
+			StringBuffer sb = new StringBuffer("Sports: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getSports().get(i).getSport()+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+			
+		}
+		if (!Person.getFavourite_teams().isEmpty()) {
+			
+			int count = Person.getFavourite_teams().size();
+			StringBuffer sb = new StringBuffer("Favourite teams: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getFavourite_teams().get(i).getName()+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+			
+		}
+		if (!Person.getFavourite_athletes().isEmpty()) {
+			
+			int count = Person.getFavourite_athletes().size();
+			StringBuffer sb = new StringBuffer("Favourite athletes: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getFavourite_athletes().get(i).getName()+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+			
+		}
+		if (Person.getTV()!=null) ListOfAttributes.add("TV: "+Person.getTV());	
+		if (Person.getMovies()!=null) {
+			
+			 List<String> Listofsplittedstrings=new ArrayList<String>();
+			 Listofsplittedstrings.addAll(ArrangeStrings(Person.getMovies()));
+			 
+			 StringBuffer sb = new StringBuffer("Movies: ");
+			 for (String s : Listofsplittedstrings){
+				 sb.append(s);
+			 }
+			 ListOfAttributes.add(sb.toString());
+			
+			}
+		if (Person.getBooks()!=null) ListOfAttributes.add("Books: "+Person.getBooks());
+		if (Person.getMusic()!=null) ListOfAttributes.add("Music: "+Person.getMusic());
+		if (!Person.getTelevision().isEmpty()) {
+			
+			int count = Person.getTelevision().size();
+			StringBuffer sb = new StringBuffer("Television: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getTelevision().get(i).getName()+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+			
+		}
+			
+		if (Person.getQuotes()!=null) ListOfAttributes.add("Quotes: "+Person.getQuotes());	
+		if (Person.getBio()!=null) ListOfAttributes.add("Bio: "+Person.getBio());
 	}
 	
 	
