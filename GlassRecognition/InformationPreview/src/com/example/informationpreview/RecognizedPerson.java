@@ -22,11 +22,13 @@ import com.example.fbattributes.Work;
 
 public class RecognizedPerson implements Serializable{
 
+	String notes;
+	
 	String birthday;
 	String first_name;
 	String last_name;
 	String relationship_status;
-	String city;
+	String hometown_location;
 	String picture;
 	
 	String FBusername;
@@ -34,21 +36,21 @@ public class RecognizedPerson implements Serializable{
 	String religion;
 	String quotes;
 	String political;
-	List<Education> education;
+	List<Education> educations;
 	String music;
 	List<Sport> sports;
 	String tv;
 	String movies;
 	String books;
 	List<Language> languages;
-	List<Work> work;
+	List<Work> work_places;
 	List<Future_event> future_events;
 	List<Last_checkin> last_checkins;
 	String about_me;
 	List<Favorite_athlete> favorite_athletes;
 	List<Favorite_team> favorite_teams;
 	List<Group> groups;
-	List<Television> television;
+	List<Television> televisions;
 	String bio;
 	List<String> inspirational_people;
 	List<Like> likes;
@@ -58,13 +60,15 @@ public class RecognizedPerson implements Serializable{
 	
 	//Constructor for -RecognizedPerson-
 	public RecognizedPerson () {}
-	public RecognizedPerson (String name, String surname, String FBname, String interest, String rel, String quot, String date, String place, String status, String politics, List<Education> educat, String mus, List<Sport> sport, String telev, String mov, String book, List<Language> lang, List<Work> job, List<Future_event> futureEvents, List<Last_checkin> lastCheckins, String about, List<Favorite_athlete> athletes, List<Favorite_team> teams, List<Group> fbGroups, List<Television> televisio, String bio_, List<String> inspPeople, List<Like> like, List<Event> event, List<MutualFriend> mutualFriends, String pic) {
+	public RecognizedPerson (String not, String name, String surname, String FBname, String interest, String rel, String quot, String date, String place, String status, String politics, List<Education> educat, String mus, List<Sport> sport, String telev, String mov, String book, List<Language> lang, List<Work> job, List<Future_event> futureEvents, List<Last_checkin> lastCheckins, String about, List<Favorite_athlete> athletes, List<Favorite_team> teams, List<Group> fbGroups, List<Television> televisio, String bio_, List<String> inspPeople, List<Like> like, List<Event> event, List<MutualFriend> mutualFriends, String pic) {
 
+		notes=not;
+		
 		first_name=name;
 		last_name=surname;
 		picture=pic;
 		
-		city=place;
+		hometown_location=place;
 		birthday=date;
 		relationship_status=status;
 		
@@ -73,21 +77,21 @@ public class RecognizedPerson implements Serializable{
 		religion=rel;
 		quotes=quot;
 		political=politics;
-		education=new ArrayList<Education>(educat);
+		educations=new ArrayList<Education>(educat);
 		music=mus;
 		sports=new ArrayList<Sport>(sport);
 		tv=telev;
 		movies=mov;
 		books=book;
 		languages=new ArrayList<Language>(lang);
-		work=new ArrayList<Work>(job);
+		work_places=new ArrayList<Work>(job);
 		future_events=new ArrayList<Future_event>(futureEvents);
 		last_checkins=new ArrayList<Last_checkin>(lastCheckins);
 		about_me=about;
 		favorite_athletes=new ArrayList<Favorite_athlete>(athletes);
 		favorite_teams=new ArrayList<Favorite_team>(teams);
 		groups=new ArrayList<Group>(fbGroups);
-		television=new ArrayList<Television>(televisio);
+		televisions=new ArrayList<Television>(televisio);
 		bio=bio_;
 		inspirational_people=new ArrayList<String>(inspPeople);
 		likes=new ArrayList<Like>(like);
@@ -96,6 +100,12 @@ public class RecognizedPerson implements Serializable{
 	}
 	
 //Getters and setters ------ 
+	public void setNotes (String not) {
+		this.notes=not;
+	}
+	public String getNotes () {
+		return notes;
+	}
 	public void setFirstName (String first_name) {
 		this.first_name=first_name;
 	}
@@ -114,11 +124,11 @@ public class RecognizedPerson implements Serializable{
 	public String getPicture () {
 		return picture;
 	}
-	public void setCity (String place) {
-		this.city=place;
+	public void setHometown_location (String place) {
+		this.hometown_location=place;
 	}
-	public String getCity () {
-		return city;
+	public String getHometown_location() {
+		return hometown_location;
 	}
 	public void setBirthday (String date) {
 		this.birthday=date;
@@ -205,10 +215,10 @@ public class RecognizedPerson implements Serializable{
 		return inspirational_people;
 	}
 	public void setEducation (ArrayList<Education> ed) {
-		this.education=ed;
+		this.educations=ed;
 	}
 	public List<Education> getEducation() {
-		return education;
+		return educations;
 	}
 	public void setSports (ArrayList<Sport> s) {
 		this.sports=s;
@@ -222,11 +232,11 @@ public class RecognizedPerson implements Serializable{
 	public List<Language> getLanguages() {
 		return languages;
 	}
-	public void setWork (ArrayList<Work> e) {
-		this.work=e;
+	public void setWork_places (ArrayList<Work> e) {
+		this.work_places=e;
 	}
-	public List<Work> getWork() {
-		return work;
+	public List<Work> getWork_places() {
+		return work_places;
 	}
 	public void setFuture_events (ArrayList<Future_event> e) {
 		this.future_events=e;
@@ -258,11 +268,11 @@ public class RecognizedPerson implements Serializable{
 	public List<Group> getGroups() {
 		return groups;
 	}
-	public void setTelevision (ArrayList<Television> t) {
-		this.television=t;
+	public void setTelevisions (ArrayList<Television> t) {
+		this.televisions=t;
 	}
-	public List<Television> getTelevision () {
-		return television;
+	public List<Television> getTelevisions () {
+		return televisions;
 	}
 	public void setLikes (ArrayList<Like> e) {
 		this.likes=e;

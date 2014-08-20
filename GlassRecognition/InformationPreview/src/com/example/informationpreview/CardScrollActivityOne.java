@@ -106,10 +106,10 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 		 int counter=parts.length-1;
 		List<String>splittedstring=new ArrayList<String>();
 		
-		for(int i=0; i<=counter; i++)
+		for(int i=0; i<counter; i++)
 			{	
 			splittedstring.add(parts[i]+"\n");
-			if (i==3) i=counter+1;
+			if (i==2) i=counter+1;
 			
 			}	
 		return splittedstring;
@@ -118,6 +118,8 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 	
 	
 	public void makeListOfCards() {
+		
+//Making the FIRST and the NOTES card -------------------------------
 		if (Person.getFirstName()==null && Person.getLastName()==null) {Person.setFirstName("No name available.."); Person.setLastName("");}
 		else {
 			if (Person.getFirstName()==null) Person.setFirstName("");
@@ -130,6 +132,24 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 		card1.addImage(decodedByte);
 		View card1View = card1.getView();
 		CardsOne.add(card1);
+		
+		if (Person.getNotes()==null) {
+			Card cardN = new Card(this);
+			cardN.setText("There is no Notes about "+Person.getFirstName()+" "+Person.getLastName()+".\n");
+			cardN.setFootnote("Scroll for more information...");
+			cardN.setImageLayout(Card.ImageLayout.FULL);
+			View cardNView = cardN.getView();
+			CardsOne.add(cardN);
+		}
+		else {		
+			Card cardN = new Card(this);
+			cardN.setText("My notes about "+Person.getFirstName()+" "+Person.getLastName()+":\n"+Person.getNotes());
+			cardN.setImageLayout(Card.ImageLayout.FULL);
+			View cardNView = cardN.getView();
+			CardsOne.add(cardN);
+		}
+		
+//Making the REST of the cards -------------------------
 		
 		List<String> ListOfAttributes=new ArrayList<String>();
 		
@@ -155,15 +175,88 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 			CardsOne.add(c);
 			
 		}
+//Making individual cards -------------------------------
+		
+		if (!Person.getLast_checkins().isEmpty()) {
+			
+			Card card3 = new Card(this);
+			
+			int count = Person.getLast_checkins().size();
+			StringBuffer sb = new StringBuffer("Last checkins:"+"\n"+"\n");
+			for (int i=0; i<count; i++) {
+				String s="at "+Person.getLast_checkins().get(i).getTime(); 
+				if (Person.getLast_checkins().get(i).getTime()==null) s="";
+				sb.append(Person.getLast_checkins().get(i).getLocation()+"\n"+s+"\n"+"\n");
+				if (i==1) i=count;
+			}
+			
+			card3.setText(sb.toString());
+			card3.setImageLayout(Card.ImageLayout.FULL);
+			View card3View = card3.getView();
+			CardsOne.add(card3);
+			
+		}
+		
+		
+		if (!Person.getFuture_events().isEmpty()) {
+					
+			Card card2 = new Card(this);
+					
+			int count = Person.getFuture_events().size();
+			StringBuffer sb = new StringBuffer("Future events:"+"\n"+"\n");
+			for (int i=0; i<count; i++) {
+				String s="in "+Person.getFuture_events().get(i).getLocationCity(); 
+				if (Person.getFuture_events().get(i).getLocationCity()==null) s="";
+				sb.append(Person.getFuture_events().get(i).getName()+"\n"+
+							Person.getFuture_events().get(i).getDate()+s+"\n"+"\n");
+				if (i==1) i=count;
+			}
+					
+			card2.setText(sb.toString());
+			card2.setImageLayout(Card.ImageLayout.FULL);
+			View card2View = card2.getView();
+			CardsOne.add(card2);
+				
+				}		
+		
+		if (!Person.getEvents().isEmpty()) {
+			
+				Card card4 = new Card(this);
+			
+				int count = Person.getEvents().size();
+				StringBuffer sb = new StringBuffer("Events: "+"\n"+"\n");
+				for (int i=0; i<count; i++) {
+					String s="at "+Person.getEvents().get(i).getLocation(); 
+					if (Person.getEvents().get(i).getLocation()==null) s="";
+					sb.append(Person.getEvents().get(i).getname()+"\n"+s+"\n"+"\n");
+					if (i==1) i=count;
+				}
+			
+				card4.setText(sb.toString());
+				card4.setImageLayout(Card.ImageLayout.FULL);
+				View card4View = card4.getView();
+				CardsOne.add(card4);
+			
+		}
+		
+		if (Person.getAbout_me()!=null) {
+			
+			Card card5 = new Card(this);	
+			card5.setText("About me ("+Person.getFirstName()+" "+Person.getLastName()+"):\n\n"+Person.getAbout_me());
+			card5.setImageLayout(Card.ImageLayout.FULL);
+			View card5View = card5.getView();
+			CardsOne.add(card5);	
+	}
+		
 		
 	}
 
 
 	private void fillListOfAttributes(List<String> ListOfAttributes) {
 		
-		if (Person.getBirthday()!=null) ListOfAttributes.add("Birthday: "+Person.getBirthday());
-		if (Person.getCity()!=null) ListOfAttributes.add("City: "+Person.getCity());
-		if (Person.getRelationship()!=null) ListOfAttributes.add("Relationship: "+Person.getRelationship());
+		if (Person.getBirthday()!=null) ListOfAttributes.add("Birthday: "+Person.getBirthday()+"\n");
+		if (Person.getHometown_location()!=null) ListOfAttributes.add("City: "+Person.getHometown_location()+"\n");
+		if (Person.getRelationship()!=null) ListOfAttributes.add("Relationship: "+Person.getRelationship()+"\n");
 		if (!Person.getEducation().isEmpty()) {
 			
 			int count = Person.getEducation().size();
@@ -175,12 +268,12 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 			ListOfAttributes.add(sb.toString());
 			
 		}
-		if (!Person.getWork().isEmpty()) {
+		if (!Person.getWork_places().isEmpty()) {
 			
-			int count = Person.getWork().size();
+			int count = Person.getWork_places().size();
 			StringBuffer sb = new StringBuffer("Work: ");
 			for (int i=0; i<count; i++) {
-				sb.append(Person.getWork().get(i).getWork()+"\n");
+				sb.append(Person.getWork_places().get(i).getEmployerName()+"\n");
 				if (i==2) i=count;
 			}
 			ListOfAttributes.add(sb.toString());
@@ -196,43 +289,10 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 			ListOfAttributes.add(sb.toString());
 			
 		}
-		if (Person.getReligion()!=null) ListOfAttributes.add("Religion: "+Person.getReligion());
-		if (Person.getPolitical()!=null) ListOfAttributes.add("Political: "+Person.getPolitical());
+		if (Person.getReligion()!=null) ListOfAttributes.add("Religion: "+Person.getReligion()+"\n");
+
+		if (Person.getPolitical()!=null) ListOfAttributes.add("Political: "+Person.getPolitical()+"\n");
 		
-		if (!Person.getEvents().isEmpty()) {
-			
-			int count = Person.getEvents().size();
-			StringBuffer sb = new StringBuffer("Events: ");
-			for (int i=0; i<count; i++) {
-				sb.append(Person.getEvents().get(i).getname()+" at "+Person.getEvents().get(i).getLocation()+"\n");
-				if (i==2) i=count;
-			}
-			ListOfAttributes.add(sb.toString());
-			
-		}
-		if (!Person.getLast_checkins().isEmpty()) {
-			
-			int count = Person.getLast_checkins().size();
-			StringBuffer sb = new StringBuffer("Last checkins: ");
-			for (int i=0; i<count; i++) {
-				sb.append(Person.getLast_checkins().get(i).getLocation()+" at "+Person.getLast_checkins().get(i).getTime()+"\n");
-				if (i==1) i=count;
-			}
-			ListOfAttributes.add(sb.toString());
-			
-		}
-		if (!Person.getFuture_events().isEmpty()) {
-			
-			int count = Person.getFuture_events().size();
-			StringBuffer sb = new StringBuffer("Future events: ");
-			for (int i=0; i<count; i++) {
-				sb.append(Person.getFuture_events().get(i).getName()+"\n"+"Date: "+
-						Person.getFuture_events().get(i).getDate()+" in "+Person.getFuture_events().get(i).getLocationCity()+"\n");
-				if (i==2) i=count;
-			}
-			ListOfAttributes.add(sb.toString());
-		
-		}
 		if (!Person.getMutual_friends().isEmpty()) {
 			
 			int count = Person.getMutual_friends().size();
@@ -268,8 +328,18 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 		}
 		//if (Person.getFBusername()!=null) ListOfAttributes.add("facebook: "+Person.getFBusername());
 		
-		if (Person.getAbout_me()!=null) ListOfAttributes.add("About me: "+Person.getAbout_me());
-		if (Person.getInterests()!=null) ListOfAttributes.add("Interests: "+Person.getInterests());
+		if (Person.getInterests()!=null){
+			
+			 List<String> Listofsplittedstrings=new ArrayList<String>();
+			 Listofsplittedstrings.addAll(ArrangeStrings(Person.getInterests()));
+			 
+			 StringBuffer sb = new StringBuffer("Interests: ");
+			 for (String s : Listofsplittedstrings){
+				 sb.append(s);
+			 }
+			 ListOfAttributes.add(sb.toString());
+			
+			}
 		if (!Person.getInspirational_people().isEmpty()) {
 			
 			int count = Person.getInspirational_people().size();
@@ -315,7 +385,18 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 			ListOfAttributes.add(sb.toString());
 			
 		}
-		if (Person.getTV()!=null) ListOfAttributes.add("TV: "+Person.getTV());	
+		if (Person.getTV()!=null) {
+			
+			 List<String> Listofsplittedstrings=new ArrayList<String>();
+			 Listofsplittedstrings.addAll(ArrangeStrings(Person.getTV()));
+			 
+			 StringBuffer sb = new StringBuffer("TV: ");
+			 for (String s : Listofsplittedstrings){
+				 sb.append(s);
+			 }
+			 ListOfAttributes.add(sb.toString());
+			
+			}
 		if (Person.getMovies()!=null) {
 			
 			 List<String> Listofsplittedstrings=new ArrayList<String>();
@@ -328,22 +409,56 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 			 ListOfAttributes.add(sb.toString());
 			
 			}
-		if (Person.getBooks()!=null) ListOfAttributes.add("Books: "+Person.getBooks());
-		if (Person.getMusic()!=null) ListOfAttributes.add("Music: "+Person.getMusic());
-		if (!Person.getTelevision().isEmpty()) {
+		if (Person.getBooks()!=null) 
+		{
 			
-			int count = Person.getTelevision().size();
+			 List<String> Listofsplittedstrings=new ArrayList<String>();
+			 Listofsplittedstrings.addAll(ArrangeStrings(Person.getBooks()));
+			 
+			 StringBuffer sb = new StringBuffer("Books: ");
+			 for (String s : Listofsplittedstrings){
+				 sb.append(s);
+			 }
+			 ListOfAttributes.add(sb.toString());
+			
+			}
+		if (Person.getMusic()!=null){
+			
+			 List<String> Listofsplittedstrings=new ArrayList<String>();
+			 Listofsplittedstrings.addAll(ArrangeStrings(Person.getMusic()));
+			 
+			 StringBuffer sb = new StringBuffer("Music: ");
+			 for (String s : Listofsplittedstrings){
+				 sb.append(s);
+			 }
+			 ListOfAttributes.add(sb.toString());
+			
+			}
+		if (!Person.getTelevisions().isEmpty()) {
+			
+			int count = Person.getTelevisions().size();
 			StringBuffer sb = new StringBuffer("Television: ");
 			for (int i=0; i<count; i++) {
-				sb.append(Person.getTelevision().get(i).getName()+"\n");
+				sb.append(Person.getTelevisions().get(i).getName()+"\n");
 				if (i==2) i=count;
 			}
 			ListOfAttributes.add(sb.toString());
 			
 		}
 			
-		if (Person.getQuotes()!=null) ListOfAttributes.add("Quotes: "+Person.getQuotes());	
-		if (Person.getBio()!=null) ListOfAttributes.add("Bio: "+Person.getBio());
+		if (Person.getQuotes()!=null){
+			
+			 List<String> Listofsplittedstrings=new ArrayList<String>();
+			 Listofsplittedstrings.addAll(ArrangeStrings(Person.getQuotes()));
+			 
+			 StringBuffer sb = new StringBuffer("Quotes: ");
+			 for (String s : Listofsplittedstrings){
+				 sb.append(s);
+			 }
+			 ListOfAttributes.add(sb.toString());
+			
+			}
+		//if (Person.getBio()!=null) ListOfAttributes.add("Bio: "+Person.getBio()+"\n");
 	}
 	
 	
