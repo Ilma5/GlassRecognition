@@ -50,7 +50,7 @@ public class RecognizedPerson implements Serializable{
 	List<Group> groups;
 	List<Television> television;
 	String bio;
-	String inspirational_people;
+	List<String> inspirational_people;
 	List<Like> likes;
 	List<Event> events;
 	List<MutualFriend> mutual_friends;
@@ -58,7 +58,7 @@ public class RecognizedPerson implements Serializable{
 	
 	//Constructor for -RecognizedPerson-
 	public RecognizedPerson () {}
-	public RecognizedPerson (String name, String surname, String FBname, String interest, String rel, String quot, String date, String place, String status, String politics, List<Education> educat, String mus, List<Sport> sport, String telev, String mov, String book, List<Language> lang, List<Work> job, List<Future_event> futureEvents, List<Last_checkin> lastCheckins, String about, List<Favorite_athlete> athletes, List<Favorite_team> teams, List<Group> fbGroups, List<Television> televisio, String bio_, String inspPeople, List<Like> like, List<Event> event, List<MutualFriend> mutualFriends, String pic) {
+	public RecognizedPerson (String name, String surname, String FBname, String interest, String rel, String quot, String date, String place, String status, String politics, List<Education> educat, String mus, List<Sport> sport, String telev, String mov, String book, List<Language> lang, List<Work> job, List<Future_event> futureEvents, List<Last_checkin> lastCheckins, String about, List<Favorite_athlete> athletes, List<Favorite_team> teams, List<Group> fbGroups, List<Television> televisio, String bio_, List<String> inspPeople, List<Like> like, List<Event> event, List<MutualFriend> mutualFriends, String pic) {
 
 		first_name=name;
 		last_name=surname;
@@ -89,7 +89,7 @@ public class RecognizedPerson implements Serializable{
 		groups=new ArrayList<Group>(fbGroups);
 		television=new ArrayList<Television>(televisio);
 		bio=bio_;
-		inspirational_people=inspPeople;
+		inspirational_people=new ArrayList<String>(inspPeople);
 		likes=new ArrayList<Like>(like);
 		events=new ArrayList<Event>(event);
 		mutual_friends=new ArrayList<MutualFriend>(mutualFriends);	
@@ -198,10 +198,10 @@ public class RecognizedPerson implements Serializable{
 	public String getBio() {
 		return bio;
 	}
-	public void setInspirational_people (String ip) {
+	public void setInspirational_people (ArrayList<String> ip) {
 		this.inspirational_people=ip;
 	}
-	public String getInspirational_people() {
+	public List<String> getInspirational_people() {
 		return inspirational_people;
 	}
 	public void setEducation (ArrayList<Education> ed) {

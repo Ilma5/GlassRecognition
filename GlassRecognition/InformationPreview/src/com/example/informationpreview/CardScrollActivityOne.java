@@ -270,7 +270,17 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 		
 		if (Person.getAbout_me()!=null) ListOfAttributes.add("About me: "+Person.getAbout_me());
 		if (Person.getInterests()!=null) ListOfAttributes.add("Interests: "+Person.getInterests());
-		if (Person.getInspirational_people()!=null) ListOfAttributes.add("Inspirational people: "+Person.getInspirational_people());
+		if (!Person.getInspirational_people().isEmpty()) {
+			
+			int count = Person.getInspirational_people().size();
+			StringBuffer sb = new StringBuffer("Inspirational people: ");
+			for (int i=0; i<count; i++) {
+				sb.append(Person.getInspirational_people().get(i)+"\n");
+				if (i==2) i=count;
+			}
+			ListOfAttributes.add(sb.toString());
+		
+		}
 		
 		if (!Person.getSports().isEmpty()) {
 			
