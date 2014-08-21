@@ -217,9 +217,9 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 			int count = Person.getLast_checkins().size();
 			StringBuffer sb = new StringBuffer("Last checkins:"+"\n"+"\n");
 			for (int i=0; i<count; i++) {
-				String s="at "+Person.getLast_checkins().get(i).getTime(); 
+				String s="\nat "+Person.getLast_checkins().get(i).getTime(); 
 				if (Person.getLast_checkins().get(i).getTime()==null) s="";
-				sb.append(Person.getLast_checkins().get(i).getLocation()+"\n"+s+"\n"+"\n");
+				sb.append(Person.getLast_checkins().get(i).getLocation()+s+"\n"+"\n");
 				if (i==1) i=count;
 			}
 			
@@ -238,10 +238,10 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 			int count = Person.getFuture_events().size();
 			StringBuffer sb = new StringBuffer("Future events:"+"\n"+"\n");
 			for (int i=0; i<count; i++) {
-				String s="in "+Person.getFuture_events().get(i).getLocationCity(); 
+				String s="in "+Person.getFuture_events().get(i).getLocationCity()+"\n"; 
 				if (Person.getFuture_events().get(i).getLocationCity()==null) s="";
 				sb.append(Person.getFuture_events().get(i).getName()+"\n"+
-							Person.getFuture_events().get(i).getDate()+s+"\n"+"\n");
+							Person.getFuture_events().get(i).getDate()+s+"\n");
 				if (i==1) i=count;
 			}
 					
@@ -259,9 +259,9 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 				int count = Person.getEvents().size();
 				StringBuffer sb = new StringBuffer("Events: "+"\n"+"\n");
 				for (int i=0; i<count; i++) {
-					String s="at "+Person.getEvents().get(i).getLocation(); 
+					String s="\nat "+Person.getEvents().get(i).getLocation(); 
 					if (Person.getEvents().get(i).getLocation()==null) s="";
-					sb.append(Person.getEvents().get(i).getname()+"\n"+s+"\n"+"\n");
+					sb.append(Person.getEvents().get(i).getname()+s+"\n"+"\n");
 					if (i==1) i=count;
 				}
 			
