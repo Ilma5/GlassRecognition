@@ -158,21 +158,54 @@ public class CardScrollActivityOne extends Activity implements GestureDetector.B
 	
 // Showing 3 attributes per Card
 		int k=ListOfAttributes.size();
-		int numOfCards;
-		if (k%3==0) numOfCards=k/3; else numOfCards=k/3+1;
-		int x=0;
-		for (int i=0; i<numOfCards; i++) {
-			Card c=new Card(context2);
-			String aa=ListOfAttributes.get(i+x);
-			String bb;
-			if ((i+1+x)==k) bb=""; else bb=ListOfAttributes.get(i+x+1);
-			String cc;
-			if ((i+2+x)==k || (i+2+x)>k) cc=""; else cc=ListOfAttributes.get(i+x+2);
-			c.setText(aa+"\n"+bb+"\n"+cc);
-			c.setImageLayout(Card.ImageLayout.FULL);
-			View cView=c.getView();
-			x=x+2;
-			CardsOne.add(c);
+//		int numOfCards;
+//		if (k%3==0) numOfCards=k/3; else numOfCards=k/3+1;
+//		int x=0;
+//		for (int i=0; i<numOfCards; i++) {
+//			Card c=new Card(context2);
+//			String aa=ListOfAttributes.get(i+x);
+//			String bb;
+//			if ((i+1+x)==k) bb=""; else bb=ListOfAttributes.get(i+x+1);
+//			String cc;
+//			if ((i+2+x)==k || (i+2+x)>k) cc=""; else cc=ListOfAttributes.get(i+x+2);
+//			c.setText(aa+"\n"+bb+"\n"+cc);
+//			c.setImageLayout(Card.ImageLayout.FULL);
+//			View cView=c.getView();
+//			x=x+2;
+//			CardsOne.add(c);
+//			
+//		}
+		
+		int j =0;
+		int a = 0;
+		Card c = new Card(context2);
+		for (int i = 0; i< k; i++)
+		{
+			String atr = ListOfAttributes.get(i);
+			int rowNumbers = atr.split("\n").length;
+					
+			if (j+rowNumbers > 7 || a == 3)
+			{
+				//Add filled card to the list
+				c.setImageLayout(Card.ImageLayout.FULL);
+				View cView=c.getView();
+				CardsOne.add(c);
+				
+				// Create a new empty Card
+				c = new Card(context2);
+				
+				//Set first card's attribute
+				c.setText(atr+"\n");
+				j= (rowNumbers +1 );
+				a = 1;
+			}
+			else
+			{   
+				if (c.getText()==null) c.setText("");
+				c.setText(c.getText() + atr+"\n");
+				j+= (rowNumbers +1 );
+				a++;
+			}
 			
 		}
 //Making individual cards -------------------------------
